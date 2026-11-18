@@ -220,6 +220,7 @@ footer .orn{opacity:.3;mix-blend-mode:screen;left:-50px;bottom:-30px;width:min(5
       <a class="row" href="#schedule"><span class="q">今日の流れ（誰がいつ何を）</span><span class="go">流れ</span></a>
       <a class="row" href="#program"><span class="q">いま配信に何を出す／カメラはどこ</span><span class="go">本番</span></a>
       <a class="row" href="#layout"><span class="q">機材拠点・カメラの位置</span><span class="go">配置</span></a>
+      <a class="row" href="#wire"><span class="q">機材の繋ぎこみを1枚で見たい</span><span class="go">結線図</span></a>
       <a class="row" href="#teardown"><span class="q">撤収の順番（30分しかない）</span><span class="go">撤収</span></a>
       <a class="row" href="#gear"><span class="q">レンタル機材の中身と数</span><span class="go">機材</span></a>
       <a class="row" href="#files"><span class="q">元のExcel・レイアウトを開きたい</span><span class="go">元ファイル</span></a>
@@ -314,9 +315,12 @@ footer .orn{opacity:.3;mix-blend-mode:screen;left:-50px;bottom:-30px;width:min(5
 
 <section class="sec alt" id="layout">
   <div class="wrap">
-    <div class="shead"><i>06 / LAYOUT</i><h2>会場の<em>配置</em></h2><div class="rule"></div></div>
+    <div class="shead"><i>06 / LAYOUT</i><h2>会場の<em>配置</em>と結線図</h2><div class="rule"></div></div>
     <p class="lead">機材拠点とカメラは後方中央（赤枠・縦3列撤去）。投影は前方の白壁、プロジェクターは中央の机。壁にコンセントが多数あります。画像をタップすると拡大します。</p>
     <button class="shot" type="button" id="layBtn" aria-label="会場レイアウトを拡大"><img src="layout.jpg" alt="当日の会場レイアウト" loading="lazy"></button>
+    <h3 id="wire" style="margin-top:30px;font-size:15px;color:var(--navy);scroll-margin-top:60px">機材の繋ぎこみ（結線図）</h3>
+    <p class="lead">カメラ2台はSDI（BNC 10m）でATEM SDI Pro ISOへ。マイク4本はXSWの受信機からL6へ。スライドと投影はSDI 30m。</p>
+    <button class="shot" type="button" id="wireBtn" aria-label="結線図を拡大"><img src="wire.jpg" alt="結線図" loading="lazy"></button>
   </div>
 </section>
 
@@ -402,7 +406,7 @@ footer .orn{opacity:.3;mix-blend-mode:screen;left:-50px;bottom:-30px;width:min(5
 
 <script>
 // 時間帯ごとに「いま要りそうなもの」を出す（分は0:00からの通算）
-var SEC=[["lookup","01","こんなときは"],["access","02","会場・搬入"],["team","03","体制と役割"],["schedule","04","今日の流れ"],["program","05","本番：配信に何を出すか"],["layout","06","会場の配置"],["teardown","07","撤収の順番"],["gear","08","レンタル機材"],["files","09","元のファイル"]];
+var SEC=[["lookup","01","こんなときは"],["access","02","会場・搬入"],["team","03","体制と役割"],["schedule","04","今日の流れ"],["program","05","本番：配信に何を出すか"],["layout","06","会場の配置・結線図"],["teardown","07","撤収の順番"],["gear","08","レンタル機材"],["files","09","元のファイル"]];
 var NUM={};SEC.forEach(function(x){NUM[x[0]]=x[1];});
 function navItem(id,label){var a=document.createElement("a");a.href="#"+id;a.dataset.s=id;a.innerHTML='<span class="n">'+NUM[id]+'</span>';a.appendChild(document.createTextNode(label));a.addEventListener("click",closeSheet);return a;}
 var LINKS={team:"体制と役割",access:"会場・搬入",schedule:"今日の流れ",program:"配信に何を出すか",layout:"機材拠点・カメラ位置",teardown:"撤収の順番",gear:"レンタル機材"};
@@ -424,7 +428,7 @@ var BANDS=[
   b[3].forEach(function(k){nn.appendChild(navItem(k,LINKS[k]));});
 })();
 // 目次：知りたいことの全件と、節の一覧
-var QS=[["場所・搬入時間・車","access"],["自分の担当は？","team"],["会館は何時まで","access"],["今日の流れ（誰がいつ何を）","schedule"],["配信リハはいつ","schedule"],["いま配信に何を出す","program"],["カメラは右側演台か固定ワイドか","program"],["休憩中に出すもの","program"],["機材拠点・カメラの位置","layout"],["コンセントの場所","layout"],["撤収の順番（30分しかない）","teardown"],["会場のアンプを戻す","teardown"],["パンダの箱を分けて積む","teardown"],["レンタル機材の中身と数","gear"],["元のExcel・レイアウト","files"]];
+var QS=[["場所・搬入時間・車","access"],["自分の担当は？","team"],["会館は何時まで","access"],["今日の流れ（誰がいつ何を）","schedule"],["配信リハはいつ","schedule"],["いま配信に何を出す","program"],["カメラは右側演台か固定ワイドか","program"],["休憩中に出すもの","program"],["機材拠点・カメラの位置","layout"],["コンセントの場所","layout"],["機材の繋ぎこみ（結線図）","layout"],["撤収の順番（30分しかない）","teardown"],["会場のアンプを戻す","teardown"],["パンダの箱を分けて積む","teardown"],["レンタル機材の中身と数","gear"],["元のExcel・レイアウト","files"]];
 var navQ=document.getElementById("navQ"),navS=document.getElementById("navS");
 QS.forEach(function(q){navQ.appendChild(navItem(q[1],q[0]));});
 SEC.forEach(function(x){navS.appendChild(navItem(x[0],x[2]));});
@@ -448,6 +452,7 @@ topBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smoo
 window.addEventListener("scroll",syncTop,{passive:true});syncTop();
 var lb=document.getElementById("lb"),lbi=document.getElementById("lbi");
 document.getElementById("layBtn").addEventListener("click",function(){lbi.src="layout.jpg";lbi.alt="当日の会場レイアウト";lb.hidden=false;document.body.style.overflow="hidden";});
+document.getElementById("wireBtn").addEventListener("click",function(){lbi.src="wire.jpg";lbi.alt="結線図";lb.hidden=false;document.body.style.overflow="hidden";});
 function closeLb(){lb.hidden=true;lbi.src="";document.body.style.overflow="";}
 lb.addEventListener("click",closeLb);document.getElementById("lbx").addEventListener("click",closeLb);
 document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;if(!lb.hidden)closeLb();else if(!sheet.hidden)closeSheet();});

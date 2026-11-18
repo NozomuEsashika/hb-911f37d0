@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>1120 配信ハンドブック</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+<style>
+:root{
+  --navy:#003366; --blue:#0877D7; --red:#BD4B47;
+  --fg:#2D2D2D; --muted:#6E7681;
+  --bg:#FFFFFF; --tint:#E4F2FD; --tint2:#F3F7FB; --line:#DCEDFD; --warn:#FFF4F2;
+  --shadow:rgba(4,101,185,.20) 8px 8px 8px 0, rgb(220,237,253) 5px 5px 10px 0 inset;
+  --shadow-s:rgba(4,101,185,.16) 5px 5px 7px 0, rgb(228,242,253) 4px 4px 8px 0 inset;
+  --f:"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,system-ui,sans-serif;
+  --n:"Roboto","Noto Sans JP",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-size:15px;line-height:1.85;-webkit-text-size-adjust:100%;overflow-x:hidden}
+h1,h2,h3{margin:0;line-height:1.4;text-wrap:balance}
+a{color:inherit}
+.wrap{max-width:1020px;margin-inline:auto;padding-inline:16px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.band{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+.band-in{max-width:1020px;margin-inline:auto;padding:9px 16px;display:flex;align-items:center;gap:10px}
+.band b{font-size:13px;color:var(--navy);white-space:nowrap}
+.band span{margin-left:auto;font-family:var(--n);font-size:11px;color:var(--blue);white-space:nowrap}
+@media (max-width:540px){.band span{display:none}}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A82E4 0%,#0463AF 46%,#003366 100%);color:#fff}
+.hero-in{position:relative;z-index:1;padding-block:38px 34px}
+.eyebrow{font-size:12px;opacity:.9}
+.hero h1{font-size:clamp(28px,7.6vw,46px);font-weight:700;margin-top:10px;letter-spacing:-.01em}
+.hero .sub{font-size:clamp(14px,3.5vw,17px);font-weight:500;margin-top:8px;opacity:.95}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{display:inline-flex;align-items:center;gap:6px;background:#fff;border-radius:100px;padding:6px 15px;font-size:12.5px;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,30,70,.18);text-decoration:none}
+.tag.v{color:var(--red);border:2px solid var(--red)}
+.tag.z{color:var(--blue);border:2px solid var(--blue)}
+.tag.n{color:var(--navy);border:2px solid var(--navy)}
+.tag .pin{font-family:var(--n);font-size:11px;opacity:.75}
+
+.day{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);border-radius:14px;padding:14px 14px 10px;margin-top:20px}
+.day-h{display:flex;justify-content:space-between;font-family:var(--n);font-size:10.5px;opacity:.92}
+.track{display:flex;height:36px;margin-top:7px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.16)}
+.seg{display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.3);min-width:0}
+.seg:last-child{border-right:0}
+.seg span{font-size:10.5px;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.92}
+.seg.main{background:rgba(255,255,255,.32)}.seg.main span{font-weight:700;opacity:1}
+.seg.hot{background:rgba(189,75,71,.55)}.seg.hot span{font-weight:700;opacity:1}
+.seg.dim{background:rgba(0,0,0,.12)}
+.seg.thin span{display:none}
+.live{position:relative;height:32px;margin-top:5px}
+.live i{position:absolute;top:3px;height:8px;border-radius:100px;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.live em{position:absolute;top:15px;font-family:var(--n);font-size:10.5px;font-style:normal;transform:translateX(-50%);white-space:nowrap;opacity:.95}
+@media (max-width:560px){.seg span{font-size:9.5px;padding:0 2px}}
+
+.sec{position:relative;overflow:hidden;padding-block:44px 38px;scroll-margin-top:44px}
+.sec.alt{background:var(--tint2)}
+.shead i{display:block;font-family:var(--n);font-style:normal;font-size:11.5px;letter-spacing:.14em;color:var(--blue);margin-bottom:4px}
+.shead h2{font-size:clamp(19px,4.8vw,25px);font-weight:700;color:var(--navy)}
+.shead h2 em{font-style:normal;color:var(--blue)}
+.rule{height:4px;width:48px;background:linear-gradient(90deg,#A1EFD9,#0877D7);border-radius:100px;margin-top:12px}
+.lead{color:var(--muted);font-size:13.5px;margin:10px 0 0;max-width:62ch}
+
+.now{margin-top:18px;background:var(--tint);border-radius:14px;padding:14px 16px}
+.now h3{font-size:13px;color:var(--navy);margin:0 0 9px;font-weight:700}
+.now h3 span{font-family:var(--n);font-size:11.5px;color:var(--blue);margin-left:6px;font-weight:700}
+.nowlist{display:flex;flex-wrap:wrap;gap:8px}
+.nowlist a{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:100px;padding:7px 14px;text-decoration:none;font-size:13px;font-weight:500;box-shadow:rgba(4,101,185,.14) 3px 3px 6px 0}
+.rows{display:grid;gap:10px;margin-top:20px}
+@media (min-width:700px){.rows{grid-template-columns:1fr 1fr}}
+.row{display:flex;align-items:center;gap:12px;background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow-s);padding:13px 16px;text-decoration:none;transition:transform .16s}
+.row:hover,.row:focus-visible{transform:translateY(-2px)}
+.row .q{flex:1;min-width:0;font-size:14px;font-weight:500}
+.row .go{flex:none;min-width:68px;text-align:center;padding:3px 10px;border-radius:100px;background:var(--navy);color:#fff;font-size:12px;font-weight:700;white-space:nowrap}
+
+.acc{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.acc .i{flex:1 1 210px;background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow-s);padding:12px 15px;font-size:13.5px;line-height:1.8}
+.acc .i b{display:block;font-size:11.5px;letter-spacing:.06em;color:var(--blue);margin-bottom:1px}
+.acc .i strong{font-family:var(--n);font-size:19px;color:var(--navy)}
+.acc .i a{color:var(--navy);text-decoration:none;border-bottom:1px solid var(--line)}
+.note{margin-top:20px;background:var(--tint);border-radius:14px;padding:16px 18px;font-size:13.5px}
+.note b{color:var(--navy)}
+.note.w{background:var(--warn)}
+.note.w b{color:var(--red)}
+
+.tbl{margin-top:20px;background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.tbl h3{margin:0;padding:13px 16px;font-size:14px;color:var(--navy);background:var(--tint)}
+.tbl h3 small{font-weight:400;font-size:12px;color:var(--muted);margin-left:8px}
+.tbl table{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th,.tbl td{padding:10px 14px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl thead th{background:var(--tint2);color:var(--navy);font-size:11.5px;font-weight:700;white-space:nowrap}
+.tbl .t{font-family:var(--n);font-weight:700;color:var(--navy);white-space:nowrap}
+.tbl .m{color:var(--muted);font-size:12.5px}
+.tbl .o{color:var(--blue);font-size:12.5px}
+.tbl tr.hi td{background:var(--warn)}
+.tbl .q{font-family:var(--n);font-weight:700;color:var(--blue);white-space:nowrap;text-align:right}
+@media (max-width:760px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;border-top:1px solid var(--line);padding:11px 14px}
+  .tbl td{display:block;border:0;padding:1px 0}
+  .tbl .q{text-align:left}
+}
+
+.shot{display:block;width:100%;margin-top:20px;padding:0;border:4px solid #fff;border-radius:14px;overflow:hidden;background:#fff;box-shadow:var(--shadow);cursor:zoom-in;line-height:0}
+.shot img{width:100%;height:auto;display:block;border-radius:10px}
+
+.steps{counter-reset:s;display:grid;gap:10px;margin-top:20px}
+.step{display:flex;gap:14px;background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow-s);padding:13px 16px}
+.step::before{counter-increment:s;content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--n);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.step.r::before{background:var(--red)}
+.step div{flex:1;min-width:0;font-size:13.5px}
+.step b{display:block;color:var(--navy);font-size:14.5px}
+.step.r b{color:var(--red)}
+.step small{color:var(--muted);font-size:12.5px}
+
+footer{margin-top:46px;background:var(--navy);color:#fff}
+footer .wrap{padding-block:26px 44px;font-size:12px;line-height:2}
+
+.top{position:fixed;right:14px;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:59;width:46px;height:46px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:var(--navy);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:rgba(4,101,185,.26) 3px 4px 12px 0;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.top.on{opacity:1;visibility:visible}
+.lb[hidden]{display:none!important}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(0,22,44,.95);display:flex;align-items:center;justify-content:center;padding:14px;cursor:zoom-out}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+.lb .x{position:absolute;top:12px;right:14px;background:rgba(0,20,42,.88);outline:1px solid rgba(255,255,255,.45);color:#fff;border:0;border-radius:100px;padding:8px 15px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--f)}
+.orn{position:absolute;pointer-events:none;z-index:0;user-select:none}
+.hero .o1{top:-14px;right:-50px;width:min(66vw,500px);opacity:.5;mix-blend-mode:screen}
+.hero .o2{bottom:-40px;left:-60px;width:min(56vw,400px);opacity:.42;mix-blend-mode:screen}
+.sec .orn{opacity:.5}
+.sec .wrap,.hero .wrap,footer .wrap{position:relative;z-index:1}
+footer{position:relative;overflow:hidden}
+footer .orn{opacity:.3;mix-blend-mode:screen;left:-50px;bottom:-30px;width:min(50vw,340px)}
+.mapfb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;height:150px;margin-top:20px;background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow);text-decoration:none;color:var(--navy);font-weight:700;font-size:15px;line-height:1.7}
+.mapfb span{font-size:12.5px;font-weight:400;color:var(--muted)}
+.files{margin-top:20px;background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.file{display:flex;gap:12px;padding:14px 16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.file:first-child{border-top:0}
+.file b{flex:0 0 184px;font-size:13.5px;color:var(--navy)}
+.file div{flex:1;min-width:190px;font-size:13px;line-height:2}
+.file a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:9px;background:var(--navy);color:#fff;border:0;border-radius:100px;padding:13px 19px;font-family:var(--f);font-size:13px;font-weight:700;cursor:pointer;box-shadow:rgba(4,101,185,.45) 4px 6px 16px 0}
+.fab .cur{display:inline-flex;align-items:baseline;gap:3px;font-size:11px;background:rgba(255,255,255,.24);border-radius:100px;padding:2px 9px}
+.fab .cur[hidden]{display:none}
+.sheet[hidden]{display:none!important}
+.sheet{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end;justify-content:flex-end}
+.sheet .bd{position:absolute;inset:0;background:rgba(0,28,56,.45)}
+.sheet .panel{position:relative;background:#fff;width:100%;max-height:80vh;overflow:auto;border-radius:16px 16px 0 0;padding:18px 16px calc(22px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 32px rgba(0,30,70,.3)}
+@media (min-width:760px){.sheet{align-items:stretch}.sheet .panel{width:364px;max-height:none;height:100%;border-radius:0;padding-top:22px}}
+.sheet h4{margin:0 0 10px;font-size:12px;color:var(--blue);letter-spacing:.1em;font-family:var(--n);font-weight:700}
+.sheet h4 em{font-style:normal;color:var(--navy);font-weight:700;letter-spacing:0}
+.sheet .close{position:absolute;top:14px;right:16px;background:var(--tint);border:0;color:var(--navy);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--f)}
+.navlist{display:flex;flex-direction:column;gap:2px;margin-bottom:18px}
+.navlist a{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;text-decoration:none;font-size:13.5px}
+.navlist a:hover{background:var(--tint2)}
+.navlist a .n{flex:none;width:46px;font-size:11px;font-weight:700;color:var(--muted);text-align:center}
+.navlist a[aria-current="true"]{background:var(--tint);color:var(--navy);font-weight:700}
+.navlist a[aria-current="true"] .n{color:var(--blue)}
+.allq{margin:2px 0 18px}
+.allq summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--blue);font-weight:700;padding:9px 10px;border-radius:8px;background:var(--tint2)}
+.allq summary::-webkit-details-marker{display:none}
+.allq summary::after{content:" ▾"}
+.allq[open] summary::after{content:" ▴"}
+.team{display:grid;gap:12px;margin-top:20px}
+@media (min-width:700px){.team{grid-template-columns:1fr 1fr}}
+.role{background:#fff;border:4px solid #fff;border-radius:14px;box-shadow:var(--shadow-s);padding:16px 18px}
+.role i{display:block;font-style:normal;font-size:11.5px;letter-spacing:.06em;color:var(--blue);font-weight:700}
+.role h3{font-size:20px;color:var(--navy);margin-top:2px}
+.role ul{margin:10px 0 0;padding-left:1.2em;font-size:13.5px}
+.role li{margin:2px 0}
+</style>
+</head>
+<body>
+
+<div class="band"><div class="band-in">
+  <b>東京オートバイ協同組合 キックオフセミナー</b><span>2026.11.20 FRI ／ 健保会館 4階講堂</span>
+</div></div>
+
+<header class="hero">
+  <img class="orn o1" src="orn-tr.png" alt="" aria-hidden="true">
+  <img class="orn o2" src="orn-bl.png" alt="" aria-hidden="true">
+  <div class="wrap hero-in">
+    <div class="eyebrow">令和8年度 業界別人材確保ストラテジー促進事業</div>
+    <h1>困ったらこれを見る</h1>
+    <div class="sub">配信・撮影クルー 現場ハンドブック</div>
+    <div class="tags">
+      <a class="tag n" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E6%B8%8B%E8%B0%B73-11-12" target="_blank" rel="noopener">搬入 10:30　健保会館<span class="pin">地図 ↗</span></a>
+      <span class="tag z">配信 14:15–16:35</span>
+      <span class="tag v">撤収 16:30–17:00（30分）</span>
+    </div>
+    <div class="day">
+      <div class="day-h"><span>09:00</span><span>11:00</span><span>13:00</span><span>15:00</span><span>17:00</span></div>
+      <div class="track">
+        <div class="seg dim" style="flex:0 0 18.75%" title="9:00 会場オープン（事務局）"><span>会場オープン</span></div>
+        <div class="seg" style="flex:0 0 18.75%"><span>搬入・仕込み</span></div>
+        <div class="seg" style="flex:0 0 6.25%" title="12:00–12:30 進行リハ"><span>進行リハ</span></div>
+        <div class="seg dim" style="flex:0 0 12.5%"><span>休憩</span></div>
+        <div class="seg" style="flex:0 0 6.25%" title="13:30–14:00 配信リハ"><span>配信リハ</span></div>
+        <div class="seg thin" style="flex:0 0 3.125%" title="14:00–14:15 待機"><span>待機</span></div>
+        <div class="seg main" style="flex:0 0 28.125%"><span>本 番</span></div>
+        <div class="seg hot" style="flex:0 0 6.25%" title="16:30–17:00 撤収"><span>撤収</span></div>
+      </div>
+      <div class="live"><i style="left:65.625%;width:29.17%"></i><em style="left:80%">配信 14:15–16:35</em></div>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="lookup">
+  <img class="orn" alt="" aria-hidden="true" style="top:-30px;right:-70px;width:min(50vw,330px)" src="orn-tr.png">
+  <div class="wrap">
+    <div class="shead"><i>01 / LOOKUP</i><h2>こんなときは、<em>ここを見る</em></h2><div class="rule"></div></div>
+    <div class="now"><h3>いま要りそうなもの<span id="bandName">—</span></h3><div class="nowlist" id="nowRows"></div></div>
+    <div class="rows">
+      <a class="row" href="#access"><span class="q">場所・搬入時間・車</span><span class="go">会場</span></a>
+      <a class="row" href="#team"><span class="q">自分の担当は？　誰が何をやる</span><span class="go">体制</span></a>
+      <a class="row" href="#schedule"><span class="q">今日の流れ（誰がいつ何を）</span><span class="go">流れ</span></a>
+      <a class="row" href="#program"><span class="q">いま配信に何を出す／カメラはどこ</span><span class="go">本番</span></a>
+      <a class="row" href="#layout"><span class="q">機材拠点・カメラの位置</span><span class="go">配置</span></a>
+      <a class="row" href="#teardown"><span class="q">撤収の順番（30分しかない）</span><span class="go">撤収</span></a>
+      <a class="row" href="#gear"><span class="q">レンタル機材の中身と数</span><span class="go">機材</span></a>
+      <a class="row" href="#files"><span class="q">元のExcel・レイアウトを開きたい</span><span class="go">元ファイル</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="access">
+  <img class="orn" alt="" aria-hidden="true" style="bottom:-50px;left:-70px;width:min(50vw,330px)" src="orn-bl.png">
+  <div class="wrap">
+    <div class="shead"><i>02 / ACCESS</i><h2>会場・<em>搬入</em></h2><div class="rule"></div></div>
+    <div class="acc">
+      <div class="i"><b>搬入開始</b><strong>10:30</strong></div>
+      <div class="i"><b>会場</b><a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E6%B8%8B%E8%B0%B73-11-12" target="_blank" rel="noopener">東京自動車サービス健保会館 4階講堂 ↗</a><br><small>東京都渋谷区渋谷3-11-12</small></div>
+      <div class="i"><b>最寄り</b>渋谷駅（新南口・東口方面）</div>
+      <div class="i"><b>車</b>会館に停められる（下見で確認済み）</div>
+    </div>
+    <a class="mapfb" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E6%B8%8B%E8%B0%B73-11-12" target="_blank" rel="noopener">地図を開く ↗<span>東京自動車サービス健保会館（渋谷区渋谷3-11-12）</span></a>
+    <div class="note w">
+      <b>会館は17:00まで</b>　17:00には完全撤収。延長はできません。撤収は30分しかないので、<a href="#teardown">撤収の順番</a>を先に見ておいてください。
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="team">
+  <img class="orn" alt="" aria-hidden="true" style="top:-30px;right:-70px;width:min(48vw,320px)" src="orn-tr.png">
+  <div class="wrap">
+    <div class="shead"><i>03 / TEAM</i><h2>体制と<em>役割</em></h2><div class="rule"></div></div>
+    <p class="lead">撮影チーム（and,a）は3人。司会・受付・タイムキープは事務局が担当します。</p>
+    <div class="team">
+      <div class="role"><i>配信卓</i><h3>山梨・江刺家</h3><ul>
+        <li>配信（Zoom）の開始と終了</li>
+        <li>スイッチング（配信に出す画面の切替）</li>
+        <li>音（マイク・休憩中の動画・会場スピーカー）</li>
+      </ul></div>
+      <div class="role"><i>カメラ</i><h3>ルイ</h3><ul>
+        <li>カメラ2台（右側演台／固定ワイド）</li>
+        <li>右側演台のカメラで登壇者を追う</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="schedule">
+  <div class="wrap">
+    <div class="shead"><i>04 / SCHEDULE</i><h2>今日の<em>流れ</em></h2><div class="rule"></div></div>
+    <p class="lead">会場の予約は 9:00〜17:00。撮影チームは 10:30 から。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>時刻</th><th>撮影チーム（and,a）</th><th>事務局・講師</th></tr></thead>
+      <tbody>
+        <tr><td class="t">9:00</td><td class="m">—</td><td>事務局 会場入り・会場設置（受付・レイアウト・Wi-Fi・照明・空調）</td></tr>
+        <tr><td class="t">10:30</td><td><b>搬入・仕込み</b></td><td class="m">会場の配置を共有</td></tr>
+        <tr><td class="t">12:00</td><td class="m">仕込みの続き</td><td>進行リハ（事務局・講師）12:00–12:30</td></tr>
+        <tr><td class="t">12:30</td><td>休憩</td><td>休憩</td></tr>
+        <tr class="hi"><td class="t">13:30</td><td><b>配信リハ</b> 13:30–14:00</td><td>配信リハ</td></tr>
+        <tr class="hi"><td class="t">14:15</td><td><b>配信開始・撮影開始</b>（入室許可は14:20から）</td><td>開場・受付開始</td></tr>
+        <tr><td class="t">14:30</td><td>本番</td><td>開会</td></tr>
+        <tr class="hi"><td class="t">16:30</td><td><b>撮影終了 → すぐ撤収</b></td><td>閉会</td></tr>
+        <tr class="hi"><td class="t">16:35</td><td><b>Zoom切断</b>（オンラインが全員抜けたらその時点で）</td><td class="m">—</td></tr>
+        <tr class="hi"><td class="t">17:00</td><td><b>完全撤収</b></td><td>完全撤収</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="sec" id="program">
+  <img class="orn" alt="" aria-hidden="true" style="top:-30px;right:-70px;width:min(48vw,320px)" src="orn-tr.png">
+  <div class="wrap">
+    <div class="shead"><i>05 / PROGRAM</i><h2>本番：配信に<em>何を出すか</em></h2><div class="rule"></div></div>
+    <p class="lead">カメラは「右側演台」と「固定ワイド」の2つ。時刻は目安です。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>時刻</th><th>内容</th><th>配信画面</th><th>カメラ</th></tr></thead>
+      <tbody>
+        <tr><td class="t">14:15</td><td>待機（14:20 Zoom入室開始）</td><td class="o">開会前スライド</td><td class="m">—</td></tr>
+        <tr><td class="t">14:29</td><td>開始1分前</td><td class="o">開会前スライド＋前方ワイド</td><td>固定ワイド</td></tr>
+        <tr class="hi"><td class="t">14:30</td><td>開会・司会（事務局）</td><td class="o">司会者</td><td>右側演台</td></tr>
+        <tr><td class="t">14:31</td><td>主催者挨拶（3分）→ 団体挨拶（1分）</td><td class="o">登壇者。入れ替わりの間は次第スライドだけ</td><td>右側演台</td></tr>
+        <tr class="hi"><td class="t">14:35</td><td>基調講演（55分）</td><td class="o">スライド優先＋講師ワイプ</td><td>右側演台</td></tr>
+        <tr><td class="t">15:30</td><td>休憩（10分）</td><td class="o">休憩スライド＋財団提供動画（アナウンス時だけ音量を絞る）</td><td class="m">—</td></tr>
+        <tr><td class="t">15:40</td><td>再開</td><td class="o">講師</td><td>右側演台</td></tr>
+        <tr><td class="t">15:40頃</td><td>自己診断ワーク（8分）</td><td class="o">スライド全画面（テロップあり）／会場全景</td><td>固定ワイド</td></tr>
+        <tr><td class="t">15:48頃</td><td>ワークの振り返り（2分）</td><td class="o">スライド優先＋講師ワイプ</td><td>右側演台</td></tr>
+        <tr><td class="t">15:50</td><td>支援メニューの説明（事務局・14分）</td><td class="o">スライド優先＋司会ワイプ</td><td>右側演台</td></tr>
+        <tr><td class="t">16:05頃</td><td>講師と事務局の掛け合い（15分）</td><td class="o">スライド優先＋前方ワイプ</td><td>固定ワイド</td></tr>
+        <tr><td class="t">16:20</td><td>質疑応答（10分）</td><td class="o">スライド優先＋前方ワイプ</td><td>固定ワイド</td></tr>
+        <tr class="hi"><td class="t">16:30</td><td>閉会</td><td class="o">司会者</td><td>右側演台</td></tr>
+        <tr class="hi"><td class="t">16:30–16:35</td><td>Zoom切断まで</td><td class="o">終了＆アンケート依頼スライド</td><td class="m">—</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="sec alt" id="layout">
+  <div class="wrap">
+    <div class="shead"><i>06 / LAYOUT</i><h2>会場の<em>配置</em></h2><div class="rule"></div></div>
+    <p class="lead">機材拠点とカメラは後方中央（赤枠・縦3列撤去）。投影は前方の白壁、プロジェクターは中央の机。壁にコンセントが多数あります。画像をタップすると拡大します。</p>
+    <button class="shot" type="button" id="layBtn" aria-label="会場レイアウトを拡大"><img src="layout.jpg" alt="当日の会場レイアウト" loading="lazy"></button>
+  </div>
+</section>
+
+<section class="sec" id="teardown">
+  <img class="orn" alt="" aria-hidden="true" style="bottom:-40px;left:-70px;width:min(52vw,340px)" src="orn-bl.png">
+  <div class="wrap">
+    <div class="shead"><i>07 / TEARDOWN</i><h2>撤収は<em>30分</em>。とにかく車へ</h2><div class="rule"></div></div>
+    <p class="lead">16:30 撮影終了と同時に始めて、17:00 には会館を出る。会場ではきれいに片付けない。巻く・数える・仕分けるのは帰ってから。</p>
+    <div class="steps">
+      <div class="step r"><div><b>16:30　配信担当1人だけ卓に残る</b>Zoomを切る（16:35まで。オンラインが全員抜けたらその時点で）。ほかの人はすぐ撤収に入る。</div></div>
+      <div class="step r"><div><b>会場のアンプを元に戻す（最優先）</b>組み替える前に撮った写真のとおりに配線とつまみを戻す。これだけは会場で必ず終わらせる。</div></div>
+      <div class="step"><div><b>カメラ・三脚・PC・スイッチャーをケースへ</b>壊れ物から先に。ケースに入れたら車へ。</div></div>
+      <div class="step"><div><b>床のケーブルは巻かずに抜いて袋・コンテナへ</b>30mのSDIもそのまま放り込んでよい。養生テープは剥がして持ち帰る。</div></div>
+      <div class="step"><div><b>全部まとめて車に積む</b>レンタル品と自社機材も分けなくてよい。<b style="display:inline;color:var(--red)">ただしパンダスタジオの箱（マイク2セット・ルーター1台）だけは分けて積む</b>（その日の24時までにコンビニから返却するため）。</div></div>
+      <div class="step"><div><b>最後に会場を一周</b>コンセント・プロジェクター前・機材拠点の机の上に忘れ物がないか。机と椅子は基本レイアウトに戻す（事務局と確認）。</div></div>
+    </div>
+    <div class="note w"><b>17:00 で会館が閉まる</b>　間に合わなそうなら、残っているものはすべて車に積んで出る。片付けの続きは帰ってから。</div>
+  </div>
+</section>
+
+<section class="sec alt" id="gear">
+  <div class="wrap">
+    <div class="shead"><i>08 / GEAR</i><h2>レンタル<em>機材</em></h2><div class="rule"></div></div>
+    <p class="lead">前日（11/19）に届きます。撤収のあとに数が合っているか確認するときに使ってください。自社機材（PC・スイッチャー・ミキサー・モニターなど）は別に持ち込みます。</p>
+    <div class="tbl"><h3>東京オフラインセンター（TOC）<small>返却は宅配</small></h3><table>
+      <thead><tr><th>品名</th><th>数</th><th>メモ</th></tr></thead>
+      <tbody>
+        <tr><td>Blackmagic Design BiDirect SDI/HDMI 3G（コンバーター）</td><td class="q">5</td><td class="m">双方向</td></tr>
+        <tr><td>BNCケーブル（3G/HD-SDI）30m</td><td class="q">3</td><td class="m">演台〜卓・卓〜前方</td></tr>
+        <tr><td>BNCケーブル（3G/HD-SDI）10m</td><td class="q">4</td><td class="m">カメラ2・モニター1・予備1</td></tr>
+        <tr><td>キャノンケーブル 20m</td><td class="q">3</td><td class="m"></td></tr>
+        <tr><td>キャノンケーブル 1.5m</td><td class="q">5</td><td class="m"></td></tr>
+        <tr><td>LANケーブル 20m（CAT6）</td><td class="q">2</td><td class="m"></td></tr>
+        <tr><td>HDMIケーブル 10m</td><td class="q">3</td><td class="m"></td></tr>
+        <tr><td>HDMIケーブル 3m</td><td class="q">4</td><td class="m"></td></tr>
+        <tr><td>カメラ SONY PXW-Z190</td><td class="q">2</td><td class="m"></td></tr>
+        <tr><td>Blackmagic Design ATEM SDI Pro ISO</td><td class="q">1</td><td class="m"></td></tr>
+        <tr><td>ノガアーム DG9000</td><td class="q">1</td><td class="m"></td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><h3>パンダスタジオ<small>その日の24時までにコンビニ返却</small></h3><table>
+      <thead><tr><th>品名</th><th>数</th><th>メモ</th></tr></thead>
+      <tbody>
+        <tr><td>SENNHEISER XSW 1-825 DUAL-JB（ワイヤレスマイク 2本セット）</td><td class="q">2</td><td class="m">マイク4本。会場の受信機とチャンネルを重ねない</td></tr>
+        <tr><td>5G モバイルルーター X01（有線LANポート付き）</td><td class="q">1</td><td class="m">予備回線</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="sec" id="files">
+  <img class="orn" alt="" aria-hidden="true" style="top:10px;right:-80px;width:min(46vw,300px)" src="orn-tr.png">
+  <div class="wrap">
+    <div class="shead"><i>09 / SOURCE FILES</i><h2>元の<em>ファイル</em></h2><div class="rule"></div></div>
+    <p class="lead">このページの元になったファイルです。Googleドライブに置いてあります。</p>
+    <div class="files">
+      <div class="file"><b>当日の詳細</b><div><a href="https://drive.google.com/file/d/1VKQ9JXSIVKoAIxQLKgNOROh228kT2It3/view" target="_blank" rel="noopener">スケジュール・配信詳細・準備物（Excel）</a></div></div>
+      <div class="file"><b>会場レイアウト</b><div><a href="https://drive.google.com/file/d/1K7Qs8Pshh4J8NnHqX7nJmhM_rQhmae1t/view" target="_blank" rel="noopener">基本レイアウト（現状復帰時）／当日レイアウト</a></div></div>
+      <div class="file"><b>休憩スライド</b><div><a href="https://drive.google.com/file/d/1pc23RSSGqMqUjBqXFXiT18j_VLUODlov/view" target="_blank" rel="noopener">PowerPoint</a></div></div>
+      <div class="file"><b>レンタル機材の一覧</b><div><a href="https://drive.google.com/file/d/1UDTQrsxdg3W0mPnRKGN9m1hQQzXbudR1/view" target="_blank" rel="noopener">11/20 分（Excel）</a></div></div>
+    </div>
+    <div class="note"><b>リンクが開けない場合</b>　ドライブの共有設定が必要です。江刺家までご連絡ください。</div>
+  </div>
+</section>
+
+<footer><img class="orn" src="orn-bl.png" alt="" aria-hidden="true"><div class="wrap">
+  東京オートバイ協同組合 キックオフセミナー ／ 令和8年度 業界別人材確保ストラテジー促進事業<br>
+  and,a株式会社　配信・撮影
+</div></footer>
+
+<button class="top" id="top" type="button" aria-label="ページの先頭へ戻る">↑</button>
+<button class="fab" id="fab" type="button" aria-expanded="false" aria-controls="sheet">目次<span class="cur" id="cur" hidden></span></button>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="目次">
+  <div class="bd" id="bd"></div>
+  <div class="panel">
+    <button class="close" id="close" type="button">閉じる</button>
+    <h4>いま　<em id="bandName2">—</em></h4><div class="navlist" id="navNow"></div>
+    <details class="allq"><summary>知りたいことから引く（ぜんぶ）</summary><div class="navlist" id="navQ"></div></details>
+    <h4>SECTIONS</h4><div class="navlist" id="navS"></div>
+  </div>
+</div>
+<div class="lb" id="lb" hidden><button class="x" id="lbx" type="button">閉じる</button><img id="lbi" alt=""></div>
+
+<script>
+// 時間帯ごとに「いま要りそうなもの」を出す（分は0:00からの通算）
+var SEC=[["lookup","01","こんなときは"],["access","02","会場・搬入"],["team","03","体制と役割"],["schedule","04","今日の流れ"],["program","05","本番：配信に何を出すか"],["layout","06","会場の配置"],["teardown","07","撤収の順番"],["gear","08","レンタル機材"],["files","09","元のファイル"]];
+var NUM={};SEC.forEach(function(x){NUM[x[0]]=x[1];});
+function navItem(id,label){var a=document.createElement("a");a.href="#"+id;a.dataset.s=id;a.innerHTML='<span class="n">'+NUM[id]+'</span>';a.appendChild(document.createTextNode(label));a.addEventListener("click",closeSheet);return a;}
+var LINKS={team:"体制と役割",access:"会場・搬入",schedule:"今日の流れ",program:"配信に何を出すか",layout:"機材拠点・カメラ位置",teardown:"撤収の順番",gear:"レンタル機材"};
+var BANDS=[
+ [0,630,"前日・移動中",["access","team","schedule","teardown"]],
+ [630,780,"搬入・仕込み",["layout","gear","schedule"]],
+ [780,855,"配信リハ・待機",["program","schedule"]],
+ [855,990,"本番",["program","teardown"]],
+ [990,1020,"撤収",["teardown","gear"]],
+ [1020,1441,"撤収後",["gear","teardown"]]];
+(function(){
+  var d=new Date(),m=d.getHours()*60+d.getMinutes(),b=BANDS[0];
+  for(var i=0;i<BANDS.length;i++){if(m>=BANDS[i][0]&&m<BANDS[i][1]){b=BANDS[i];break;}}
+  document.getElementById("bandName").textContent=b[2];
+  var box=document.getElementById("nowRows");
+  b[3].forEach(function(k){var a=document.createElement("a");a.href="#"+k;a.textContent=LINKS[k];box.appendChild(a);});
+  document.getElementById("bandName2").textContent=b[2];
+  var nn=document.getElementById("navNow");
+  b[3].forEach(function(k){nn.appendChild(navItem(k,LINKS[k]));});
+})();
+// 目次：知りたいことの全件と、節の一覧
+var QS=[["場所・搬入時間・車","access"],["自分の担当は？","team"],["会館は何時まで","access"],["今日の流れ（誰がいつ何を）","schedule"],["配信リハはいつ","schedule"],["いま配信に何を出す","program"],["カメラは右側演台か固定ワイドか","program"],["休憩中に出すもの","program"],["機材拠点・カメラの位置","layout"],["コンセントの場所","layout"],["撤収の順番（30分しかない）","teardown"],["会場のアンプを戻す","teardown"],["パンダの箱を分けて積む","teardown"],["レンタル機材の中身と数","gear"],["元のExcel・レイアウト","files"]];
+var navQ=document.getElementById("navQ"),navS=document.getElementById("navS");
+QS.forEach(function(q){navQ.appendChild(navItem(q[1],q[0]));});
+SEC.forEach(function(x){navS.appendChild(navItem(x[0],x[2]));});
+var sheet=document.getElementById("sheet"),fab=document.getElementById("fab");
+function openSheet(){sheet.hidden=false;fab.setAttribute("aria-expanded","true");document.body.style.overflow="hidden";}
+function closeSheet(){sheet.hidden=true;fab.setAttribute("aria-expanded","false");document.body.style.overflow="";}
+fab.addEventListener("click",function(){sheet.hidden?openSheet():closeSheet();});
+document.getElementById("bd").addEventListener("click",closeSheet);
+document.getElementById("close").addEventListener("click",closeSheet);
+// いま見ている節を目次ボタンに出す
+var cur=document.getElementById("cur");
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var id=e.target.id;
+    cur.textContent=NUM[id];cur.hidden=(id==="lookup");
+    navS.querySelectorAll("a").forEach(function(a){a.setAttribute("aria-current",a.dataset.s===id?"true":"false");});});},{rootMargin:"-45% 0px -50% 0px"});
+  SEC.forEach(function(x){var el=document.getElementById(x[0]);if(el)io.observe(el);});
+}
+var topBtn=document.getElementById("top");
+function syncTop(){topBtn.classList.toggle("on",(window.pageYOffset||document.documentElement.scrollTop)>500);}
+topBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+window.addEventListener("scroll",syncTop,{passive:true});syncTop();
+var lb=document.getElementById("lb"),lbi=document.getElementById("lbi");
+document.getElementById("layBtn").addEventListener("click",function(){lbi.src="layout.jpg";lbi.alt="当日の会場レイアウト";lb.hidden=false;document.body.style.overflow="hidden";});
+function closeLb(){lb.hidden=true;lbi.src="";document.body.style.overflow="";}
+lb.addEventListener("click",closeLb);document.getElementById("lbx").addEventListener("click",closeLb);
+document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;if(!lb.hidden)closeLb();else if(!sheet.hidden)closeSheet();});
+</script>
+</body>
+</html>
